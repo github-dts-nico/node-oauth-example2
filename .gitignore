@@ -1,2 +1,5 @@
 node_modules
 tmp*
+oauth-example2.pem
+oauth-example2.ppk
+package-lock.json
