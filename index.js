@@ -12,8 +12,8 @@ const clientID = "57370ab954e69d0f4b5c";
 const clientSecret = "fbe64ca98290408ca8d98ee1cf6fcefd6e755980";
 
 const port = 9000;
-var key = fs.readFileSync("certs/selfsigned.key");
-var cert = fs.readFileSync("certs/selfsigned.crt");
+var key = fs.readFileSync("selfsigned.key");
+var cert = fs.readFileSync("selfsigned.crt");
 var options = {
   key: key,
   cert: cert,
