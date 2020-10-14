@@ -1,5 +1,7 @@
 // Import the express lirbary
 const express = require("express");
+const https = require("https");
+const fs = require("fs");
 
 // Import the axios library, to make HTTP requests
 const axios = require("axios");
@@ -8,6 +10,14 @@ const axios = require("axios");
 // while registering the application
 const clientID = "57370ab954e69d0f4b5c";
 const clientSecret = "fbe64ca98290408ca8d98ee1cf6fcefd6e755980";
+
+const port = 9000;
+var key = fs.readFileSync("certs/selfsigned.key");
+var cert = fs.readFileSync("certs/selfsigned.crt");
+var options = {
+  key: key,
+  cert: cert,
+};
 
 // Create a new express application and use
 // the express static middleware, to serve all files
@@ -39,4 +49,9 @@ app.get("/oauth/redirect", (req, res) => {
 });
 
 // Start the server on port 8080
-app.listen(9000);
+// app.listen(9000);
+var server = https.createServer(options, app);
+
+server.listen(port, () => {
+  console.log("server starting on port : " + port);
+});
